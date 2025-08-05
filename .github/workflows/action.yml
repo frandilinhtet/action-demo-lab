@@ -1,0 +1,19 @@
+name: demo-action-test
+
+on: push
+
+jobs: 
+    first-job:
+        runs-on: ubuntu:latest
+        steps:
+            - name: checkout-stage
+              uses: actions/checkout@v4.2.2
+
+            - name: Welcome Message
+              run: echo "Hello Welcome DevOps Engineer"
+
+            - name: List File
+              run: ls
+        
+            - name: Read File
+              run: cat README.md
