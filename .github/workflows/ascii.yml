@@ -1,0 +1,21 @@
+name: Ascii Test
+
+on: push
+
+jobs:
+    ascii_test:
+        runs-on: demo-runner
+        steps:
+            - name: Checkout Stage
+              uses: actions/checkout@v4.2.2
+            
+            - name: Welcome Message
+              run: |
+                echo "Hello Welcome"
+                cat README.md
+            
+            - name: Permission Define
+              run: sudo chmod +x ascii.sh
+            
+            - name: Script Run
+              run: ./ascii.sh
