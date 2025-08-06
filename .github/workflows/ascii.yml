@@ -19,3 +19,6 @@ jobs:
             
             - name: Script Run
               run: ./ascii.sh
+            
+            - name: List file
+              run: ls -la
