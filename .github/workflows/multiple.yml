@@ -29,7 +29,6 @@ jobs:
               uses: actions/download-artifact@v5.0.0
               with:
                 name: dragon-text-file
-                path: dragon.txt
 
             - name: Testing job
               run: echo "Testing mode is on....."
@@ -45,7 +44,6 @@ jobs:
               uses: actions/download-artifact@v5.0.0
               with:
                 name: dragon-text-file
-                path: dragon.txt
 
             - name: Read the file
               run: cat dragon.txt
