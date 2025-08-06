@@ -27,7 +27,7 @@ jobs:
 
     deploy_job_1:
         runs-on: demo-runner
-        needs: build_job_1
+        needs: test_job_1
         steps:
             - name: Read the file
               run: cat dragon.txt
