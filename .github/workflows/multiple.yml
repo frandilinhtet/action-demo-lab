@@ -14,11 +14,23 @@ jobs:
             
             - name: Write file
               run: cowsay -f dragon "Run for cover I'm a Dragon Warrior..." >> dragon.txt
+            
+            - name: Upload a Build Artifact
+              uses: actions/upload-artifact@v4.6.2
+              with:
+                name: dragon-text-file
+                path: dragon.txt
     
     test_job_1:
         runs-on: demo-runner
         needs: build_job_1
         steps:
+            - name: Download a Build Artifact
+              uses: actions/download-artifact@v5.0.0
+              with:
+                name: dragon-text-file
+                path: dragon.txt
+
             - name: Testing job
               run: echo "Testing mode is on....."
 
@@ -29,6 +41,12 @@ jobs:
         runs-on: demo-runner
         needs: test_job_1
         steps:
+            - name: Download a Build Artifact
+              uses: actions/download-artifact@v5.0.0
+              with:
+                name: dragon-text-file
+                path: dragon.txt
+
             - name: Read the file
               run: cat dragon.txt
             
