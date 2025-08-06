@@ -1,0 +1,37 @@
+name: Multiple Job Tests
+
+on: push
+
+jobs:
+    build_job_1:
+        runs-on: demo-runner
+        steps:
+            - name: Checkout Stage 
+              uses: actions/checkout@v4.2.2
+            
+            - name: Package Install
+              run: sudo apt update -y & sudo apt install cowsay -y
+            
+            - name: Write file
+              run: cowsay -f dragon "Run for cover I'm a Dragon Warrior..." >> dragon.txt
+    
+    test_job_1:
+        runs-on: demo-runner
+        needs: build_job_1
+        steps:
+            - name: Testing job
+              run: echo "Testing mode is on....."
+
+            - name: Read the file
+              run: grep -i "dragon" dragon.txt
+
+    deploy_job_1:
+        runs-on: demo-runner
+        needs: build_job_1
+        steps:
+            - name: Read the file
+              run: cat dragon.txt
+            
+            - name: Deploying Job
+              run: echo "Deploy mode is start"
+            
